@@ -84,10 +84,6 @@ const deleteUser = async (req = request, res = response) => {
   try {
     const { id } = req.params
 
-    // Borrar físico de la BD
-    // const deletedUser = await User.findByIdAndDelete(id)
-
-    // Borrado suave
     const deletedUser = await User.findByIdAndUpdate(
       id,
       { status: false },
@@ -95,7 +91,6 @@ const deleteUser = async (req = request, res = response) => {
     )
 
     res.json({
-      msg: 'delete API - Controller',
       deletedUser,
     })
   } catch (error) {
